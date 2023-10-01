@@ -1,7 +1,6 @@
 FROM php:8.1-fpm
 
-# set your user name, ex: user=bernardo
-ARG user=carlos
+ARG user=hugo
 ARG uid=1000
 
 # Install system dependencies
@@ -22,6 +21,12 @@ RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd sockets
 
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# Add Node.js repository
+RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash -
+
+# Install Node.js and npm
+RUN apt-get install -y nodejs npm
 
 # Create system user to run Composer and Artisan Commands
 RUN useradd -G www-data,root -u $uid -d /home/$user $user
