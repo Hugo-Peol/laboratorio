@@ -26,4 +26,6 @@ O Projeto 1 envolve configurar um projeto laravel com docker
 
 ## Projeto 2
 
-### API RESOURCE
+### Permissions com Laravel/Breeze
+
+Esse projeto visa instalar e configurar o breeze para gerênciamento das permissões
