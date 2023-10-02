@@ -1,31 +1,71 @@
 
-# Laravel Laboratório
 
+
+
+## Setup Docker Laravel 10 com PHP 8.1
+[Assine a Academy, e Seja VIP!](https://academy.especializati.com.br)
 
 ### Passo a passo
 Clone Repositório
 ```sh
-
+git clone -b laravel-10-com-php-8.1 https://github.com/especializati/setup-docker-laravel.git app-laravel
 ```
 ```sh
 cd app-laravel
 ```
 
 
-## Projeto 1
+Crie o Arquivo .env
+```sh
+cp .env.example .env
+```
 
-### Docker
 
-**Finalizado**
+Atualize as variáveis de ambiente do arquivo .env
+```dosini
+APP_NAME=EspecializaTi
+APP_URL=http://localhost:8989
 
-O Projeto 1 envolve configurar um projeto laravel com docker 
+DB_CONNECTION=mysql
+DB_HOST=db
+DB_PORT=3306
+DB_DATABASE=nome_que_desejar_db
+DB_USERNAME=nome_usuario
+DB_PASSWORD=senha_aqui
 
-**Futuros updates:**
- - Aplicar volumes
- - Aplicar serviços
+CACHE_DRIVER=redis
+QUEUE_CONNECTION=redis
+SESSION_DRIVER=redis
 
-## Projeto 2
+REDIS_HOST=redis
+REDIS_PASSWORD=null
+REDIS_PORT=6379
+```
 
-### Permissions com Laravel/Breeze
 
-Esse projeto visa instalar e configurar o breeze para gerênciamento das permissões
+Suba os containers do projeto
+```sh
+docker-compose up -d
+```
+
+
+Acesse o container app
+```sh
+docker-compose exec app bash
+```
+
+
+Instale as dependências do projeto
+```sh
+composer install
+```
+
+
+Gere a key do projeto Laravel
+```sh
+php artisan key:generate
+```
+
+
+Acesse o projeto
+[http://localhost:8989](http://localhost:8989)
